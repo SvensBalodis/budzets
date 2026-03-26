@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <title>Budžets</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Budžeta ieraksti</h1>
+
+        <div class="balance">
+            <h2>Bilance: <span class="{{ 'positive' if bilance >= 0 else 'negative' }}">{{ bilance }} €</span></h2>
+        </div>
+
+        <div class="records">
+            {% if dati %}
+                {% for ieraksts in dati %}
+                    <div class="record {{ 'income' if ieraksts.tips == 'Ienākumi' else 'expense' }}">
+                        <span class="record-type">{{ ieraksts.tips }}</span>
+                        <span class="record-amount">{{ ieraksts.summa }} €</span>
+                        <span class="record-desc">{{ ieraksts.apraksts }}</span>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Nav ierakstu.</p>
+            {% endif %}
+        </div>
+
+        <div class="forms">
+            <form action="/dzest" method="post" class="delete-form">
+                <button type="submit" onclick="return confirm('Vai tiešām dzēst visus ierakstus?')">Dzēst visu</button>
+            </form>
+
+            <h2>Pievienot jaunu ierakstu</h2>
+            <form action="/pievienot" method="post" class="add-form">
+                <label>Summa: <input type="number" name="summa" step="0.01" required></label>
+                <label>Apraksts: <input type="text" name="apraksts" required></label>
+                <label>Tips:
+                    <select name="tips" required>
+                        <option value="Ienākumi">Ienākumi</option>
+                        <option value="Izdevumi">Izdevumi</option>
+                    </select>
+                </label>
+                <button type="submit">Pievienot</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

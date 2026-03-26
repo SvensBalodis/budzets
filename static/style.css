@@ -1,0 +1,124 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef); /* maigs gradienta fons */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 700px;
+    margin: 40px auto;
+    background-color: rgba(255, 255, 255, 0.95); /* nedaudz caurspīdīgs balts panelis */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.balance {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.balance .positive {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.balance .negative {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.records {
+    margin-bottom: 30px;
+}
+
+.record {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    color: #fff;
+    font-weight: 500;
+    transition: transform 0.2s;
+}
+
+.record:hover {
+    transform: translateY(-2px);
+}
+
+.record.income {
+    background-color: #28a745; /* zaļš ienākumiem */
+}
+
+.record.expense {
+    background-color: #dc3545; /* sarkans izdevumiem */
+}
+
+.record-type {
+    font-weight: bold;
+}
+
+.forms label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.forms input, .forms select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.delete-form button {
+    background-color: #dc3545;
+}
+
+.delete-form button:hover {
+    background-color: #a71d2a;
+}
+
+@media (max-width: 600px) {
+    .record {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .forms input, .forms select {
+        font-size: 14px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
